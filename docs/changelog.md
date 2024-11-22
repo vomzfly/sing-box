@@ -2,6 +2,19 @@
 icon: material/alert-decagram
 ---
 
+#### 1.11.0-alpha.20
+
+* Add UDP GSO support for WireGuard
+* Make GSO adaptive **1**
+
+**1**:
+
+For WireGuard outbound and endpoint, GSO will be automatically enabled when available,
+see [WireGuard Outbound](/configuration/outbound/wireguard/#gso).
+
+For TUN, GSO has been removed,
+see [Deprecated](/deprecated/#gso-option-in-tun).
+
 #### 1.11.0-alpha.19
 
 * Upgrade WireGuard outbound to endpoint **1**
