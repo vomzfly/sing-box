@@ -58,6 +58,7 @@ func InboundRegistry() *inbound.Registry {
 
 	registerQUICInbounds(registry)
 	registerStubForRemovedInbounds(registry)
+	registerTailscaleInbound(registry)
 
 	return registry
 }

@@ -2,6 +2,8 @@ package option
 
 import (
 	"net/netip"
+
+	"github.com/sagernet/sing/common/json/badoption"
 )
 
 type TailscaleEndpointOptions struct {
@@ -21,4 +23,23 @@ type TailscaleEndpointOptions struct {
 type TailscaleDNSServerOptions struct {
 	Endpoint               string `json:"endpoint,omitempty"`
 	AcceptDefaultResolvers bool   `json:"accept_default_resolvers,omitempty"`
+}
+
+type DERPInboundOptions struct {
+	ListenOptions
+	STUNPort uint16 `json:"stun_port,omitempty"`
+	InboundTLSOptionsContainer
+	ConfigPath      string                     `json:"config_path,omitempty"`
+	VerifyClientURL badoption.Listable[string] `json:"verify_client_url,omitempty"`
+	MeshWith        []DERPMeshOptions          `json:"mesh_with,omitempty"`
+	MeshPSK         string                     `json:"mesh_psk,omitempty"`
+	MeshPSKFile     string                     `json:"mesh_psk_file,omitempty"`
+	DialerOptions
+}
+
+type DERPMeshOptions struct {
+	ServerOptions
+	DialerOptions
+	OutboundTLSOptionsContainer
+	Hostname string `json:"hostname,omitempty"`
 }
